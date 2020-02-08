@@ -1,0 +1,11 @@
+.sidebtn {
+    padding: 10px 0 10px 20px;
+}
+
+.sidebtn a {
+    color: #c7d6d5;
+}
+
+.sidebtn a:hover {
+    color: #e3e3e3;
+}

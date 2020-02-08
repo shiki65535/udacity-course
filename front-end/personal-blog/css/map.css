@@ -1,0 +1,23 @@
+/* map wide screen */
+@media(min-width:801px) {
+    .map {
+        width: 800px;
+        height: 500px;
+    }
+    
+}
+
+/* map normal screen */
+@media(max-width:800px) {
+    .map {
+        width: 400px;
+        height: 250px;
+    }
+    
+}
+
+.map {
+    display: block;
+    margin: 0 auto;
+    border: 0;
+}
