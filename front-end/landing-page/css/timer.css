@@ -1,0 +1,100 @@
+/* tomato timer */
+@keyframes ripple {
+    from {
+      transform: scale(.5, .5);
+      opacity: 0.4;
+    }
+    to {
+      transform: scale(3.5, 3.5);
+      opacity: 0;
+    }
+  }
+
+.tomato_main {
+    background-color: #fff;
+    width: 300px;
+    height: 300px;
+    margin: auto;
+    border-radius: 50%;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    resize: vertical;
+}
+.tomato_number {
+    font: 4em bold;
+    color: #fbd786;
+    z-index: 5;
+}
+.tomato_ctl {
+    font: 2em bold;
+    color: #fbd786;
+    z-index: 5;
+    opacity: 0.5;
+}
+
+.circle {
+    border-radius: 50%;
+    background-color: #fff;
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    opacity: 0;
+    animation: ripple 7s infinite ease-out;
+    z-index: -10;
+}
+#ripple1 {
+    animation-delay: 0s;
+}
+#ripple2 {
+    animation-delay: 2.5s;
+}
+
+.tomato_menu {
+    margin: 50px auto;
+    padding: 10px;
+    max-width: 300px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+    color: #333;
+}
+.tomato_records {
+    margin: 0;
+    color: #333;
+}
+.tomato_record {
+    width: 300px;
+    padding: 10px;
+    margin: 10px auto;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+button {
+    border-radius: 10%;
+    background-color:#fff;
+    width: 60px;
+    height: 30px;
+    border: 0;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 14px 0 rgba(0, 0, 0, 0.1);
+    margin: 0 10px;
+    color: #999;
+    padding: 5px;
+    transition: ease 0.5s;
+}
+
+button:hover {;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.3), 0 4px 14px 0 rgba(0, 0, 0, 0.2);
+}
+
+#btn_start:hover {
+    color: #f7797d !important;
+}
+#btn_pause:hover {
+    color: #fbd786 !important;
+}
+#btn_stop:hover {
+    color: #c6ffdd !important;
+}

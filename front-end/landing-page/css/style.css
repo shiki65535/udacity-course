@@ -1,0 +1,76 @@
+@import url(./animate.min.css);
+@import url(./all.min.css);
+@import url(./timer.css);
+@import url(./navbar.css);
+@import url(./section.css);
+
+@media(min-width:768px) {
+    .motto_quotes {
+        top: 30%;
+        font-size: 1em;
+    }
+}
+@media(max-width:767px) {
+    .motto_quotes {
+        font-size: 0.5em;
+    }
+}
+
+/* ---- Base Rules ---- */
+header, nav, main, article, section, footer {
+    display: block;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    overflow-x: hidden;
+    margin: 0;
+    background: linear-gradient( 60deg, #f7797d,  #fbd786, #c6ffdd );
+    color: #fff;
+    font: 'Cambay', sans-serif;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    text-align: center;
+
+}
+
+h1 {
+    font-size: 2.5em;
+    padding-top: 50px;
+}
+
+h2 {
+    font-size: 2em;
+    padding-top: 50px;
+}
+
+ol, ul {
+    text-align: left;
+}
+
+a {
+    text-decoration: none;
+    color: #333;
+}
+
+a:hover {
+    color: #f7797d;
+}
+
+header {
+    padding-bottom: 50px;
+}
+
+footer {
+    overflow: hidden;
+    height: 60px;
+    padding: 5px;
+    font-size: 12px;
+    text-align: right;
+    background-color: #fff;
+    color: #666;
+    border-bottom: 5px solid #c6ffdd;
+}

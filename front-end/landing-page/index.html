@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Cambay&display=swap" rel="stylesheet"> 
+    <title>Your Tomato Timer to a better life.</title>
+</head>
+<body>
+    <header class="page_header">
+        <nav class="nav_bar" id="navbar">
+            <!-- navbar -->
+            <ul>
+                <li><a href="#top">⌛ Timer</a></li>
+                <li><a href="#section_cards">👏 Merits</a></li>
+                <li><a href="#section_steps">📑 Steps</a></li>
+                <li><a href="#section_motto">☕ Break</a></li>                
+            </ul>
+        </nav>
+    </header>
+<main class="page_container" id="top">
+    <header>
+        <div>
+            <h1>Your Tomato Timer</h1>
+        </div>
+        <div class="tomato_main">
+            <div class="timer" id="timer">
+                <!-- plus controller -->
+                <div class="tomato_ctl">
+                    <span id="ctl_up"><i class="fas fa-angle-up"></i></span>
+                </div>
+                <!-- timer displaer-->
+                <div class="tomato_number">
+                    <span id="timer_min">25</span>
+                    <span id="timer_sec">00</span>
+                </div>
+                <!-- minus controller -->
+                <div class="tomato_ctl">
+                    <span id="ctl_down"><i class="fas fa-angle-down"></i></span>
+                </div>
+            </div>
+            <!-- timer effect -->
+            <div class="circle" id="ripple1"></div>
+            <div class="circle" id="ripple2"></div>
+        </div>
+        <div class="tomato_menu" id="tomato_menu">
+            <!-- play / paus / stop controller -->
+            <div>
+                <button id="btn_start"><i class="far fa-play-circle fa-2x"></i></button>
+                <button id="btn_pause"><i class="far fa-pause-circle fa-2x"></i></button>
+                <button id="btn_stop"><i class="far fa-stop-circle fa-2x"></i></button>
+            </div>
+        </div>
+        <div class="tomato_records" id="tomato_records">
+            <!-- mission records-->
+        </div>
+    </header>
+    <section class="section_cards" id="section_cards">
+        <h2>Reasons to use</h2>
+        <div class="card_container">
+            <!-- YTT merits -->
+            <div class="card_menu" id="card1">
+                <div class="section_top">
+                    <img src="./img/time.png" width="100" alt="control time" />
+                </div>
+                <div class="section_bottom">
+                    <p>Manage your time</p>
+                </div>
+            </div>
+            <div class="card_menu" id="card2">
+                <div class="section_top">
+                    <img src="./img/motivation.png" width="100" alt="control time" />
+                </div>
+                <div class="section_bottom">
+                    <p>Maintain motivation</p>
+                </div>
+            </div>
+            <div class="card_menu" id="card3">
+                <div class="section_top">
+                    <img src="./img/calendar.png" width="100" alt="control time" />
+                </div>
+                <div class="section_bottom">
+                    <p>Improve planning</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section_steps" id="section_steps">
+        <!-- YTT steps -->
+        <h2>How to use</h2>
+        <div class="steps" id="steps">
+            <ol>
+                <li>Choose: Decide a task.</li>
+                <li>Start: Set Timer (usually 25 minutes).</li>
+                <li>Focus: Work on the task.</li>
+                <li>Break: Take a short break (3–5 minutes).</li>
+                <li>Repeat: Start timer again for another session.</li>
+            </ol>            
+        </div>
+    </section>    
+    <section class="section_motto" id="section_motto">
+        <div class="motto_quotes">
+            <!-- YTT break time -->
+            <h1 id="motto"></h1>
+            <p id="reload" onclick="mottoShower()"><i class="fas fa-redo fa-2x"></i></p>
+        </div>
+        <div class="motto_back">
+            <video width="100%" muted autoplay loop>
+                <source src="./img/video_2.mp4"  type="video/mp4" />
+            </video>
+        </div>
+    </section>
+</main>
+<footer class="page_footer">
+    <p>
+        <i class="fas fa-user-tie"></i> Made by Shihchi Wen.
+    </p>
+    <p>
+        Icons by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">Flaticon</a> | 
+        Video by <a href="https://www.pexels.com/zh-tw/@taryn-elliott-1522664?utm_content=attributionCopyText&amp;utm_medium=referral&amp;utm_source=pexels">Taryn Elliott</a>, from <a href="https://www.pexels.com/zh-tw/photo/3127017/?utm_content=attributionCopyText&amp;utm_medium=referral&amp;utm_source=pexels">Pexels</a>
+    </p>
+</footer>
+<!---->
+    <audio id="bird">
+        <source src="./img/bird.mp3" type="audio/mpeg">
+    </audio>
+    <script src="app.js">
+    </script>
+</body>
+
+</html>
