@@ -28,13 +28,11 @@ html {
 body {
     overflow-x: hidden;
     margin: 0;
-    background: linear-gradient( 60deg, #f7797d,  #fbd786, #c6ffdd );
+    background: linear-gradient( 80deg, #f7797d,  #fbd786, #c6ffdd );
     color: #fff;
     font: 'Cambay', sans-serif;
-    background-attachment: fixed;
     background-repeat: no-repeat;
     text-align: center;
-
 }
 
 h1 {
@@ -69,8 +67,22 @@ footer {
     height: 60px;
     padding: 5px;
     font-size: 12px;
-    text-align: right;
     background-color: #fff;
     color: #666;
     border-bottom: 5px solid #c6ffdd;
+}
+
+#gotop {
+    display: none;
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    height: 40px;
+    width: 40px;
+    z-index: 20;
+    opacity: 0.4;
+}
+
+#gotop:hover {
+    opacity: 0.7;
 }

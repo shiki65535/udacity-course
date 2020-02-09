@@ -1,12 +1,46 @@
-window.onscroll = function() {popCard();};
+window.onscroll = function() {popCard();dynamic();topButton();};
 window.onload = function() {mottoShower();};
 
-/* section effect */
-function popCard() {
-    const cardSection = document.getElementById('section_cards');
-    const cardLocation = cardSection.offsetTop;
-    let card = document.getElementsByClassName('card_menu');
+/** ENVIRONMENT ELEMENT **/
+/* navbar dynamic */
+let prev = window.pageYOffset;
+function dynamic() {
+  let current = window.pageYOffset;
+  if (prev > current) {
+    document.getElementById('navbar').style.top = '0';
+  } else {
+    document.getElementById('navbar').style.top = '-60px';
+  }
+  prev = current;
+}
 
+/* go top button */
+gototop = document.getElementById('gotop');
+
+gototop.onclick = function () {
+   document.body.scrollTop = 0; 
+   document.documentElement.scrollTop = 0; 
+}
+
+function topButton() {
+  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+    gototop.style.display = 'block';
+  } else {
+    gototop.style.display = 'none';
+  }
+}
+
+/** SECTION EFFECT **/
+/* pop up section */
+const cardSection = document.getElementById('section_cards');
+const cardLocation = cardSection.offsetTop;
+let card = document.getElementsByClassName('card_menu');
+
+const stepSection = document.getElementById('section_steps');
+const stepLocation = stepSection.offsetTop;
+let step = document.getElementById('steps');
+
+function popCard() {
     for(let i = 0; i < card.length; i++) {
         if (cardLocation - window.pageYOffset  < 250) {
             card[i].style.left = '0';
@@ -14,18 +48,41 @@ function popCard() {
             card[i].style.left = '-1400px';
         }
     }
-
-    const stepSection = document.getElementById('section_steps');
-    const stepLocation = stepSection.offsetTop;
-    let step = document.getElementById('steps');
-
     if (window.pageYOffset - stepLocation > -200) {
-        step.classList.add('animated', 'bounceIn', 'slow');
+        step.classList.add('animated', 'bounceIn', 'slow');       
     } else {
         step.classList.remove('animated', 'bounceIn', 'slow');
     }
 }
 
+/* toggle section*/
+let tglBtn1 = document.getElementById('toggle1');
+let tglBtn2 = document.getElementById('toggle2');
+
+tglBtn1.onclick = function () {
+    for( let i = 0; i< card.length; i++) {
+        if (card[i].style.display === 'none') {
+            card[i].style.display = 'block';
+            tglBtn1.innerHTML = '<i class="far fa-minus-square"></i>';
+            card[i].classList.add('animated', 'lightSpeedIn');
+        } else {
+            card[i].style.display = 'none';
+            tglBtn1.innerHTML = '<i class="far fa-plus-square"></i>';
+            card[i].classList.remove('animated', 'lightSpeedIn');    
+        }
+    }
+  }
+tglBtn2.onclick = function () {
+    if (step.style.display === 'none') {
+        step.style.display = 'block';
+        tglBtn2.innerHTML = '<i class="far fa-minus-square"></i>';
+        step.classList.add('animated', 'bounceIn', 'slow');
+    } else {
+        step.style.display = 'none';
+        tglBtn2.innerHTML = '<i class="far fa-plus-square"></i>';       
+        step.classList.remove('animated', 'bounceIn', 'slow');
+    }
+  }
 
 /* break time message */
 function mottoShower() {
@@ -43,7 +100,8 @@ function mottoShower() {
     document.getElementById('motto').textContent = mottoQuotes[mottoIndex];
 }
 
-/* Tomato Timer */
+/** TOMATO TIMER **/
+/* main timer */
 let timerMin = document.getElementById('timer_min');
 let timerSec = document.getElementById('timer_sec');
 let start = document.getElementById('btn_start');
@@ -58,10 +116,6 @@ let status = 0;
 let mins, secs;
 let timer = endTime - count;
 
-function audioPlay(){
-    bird.play();
-}
-
 start.onclick = function() {
     if(!status) {
         status = 1;
@@ -70,11 +124,9 @@ start.onclick = function() {
         status = 1;
     }
 }
-
 pause.onclick = function() {
     status = 2;
 };
-
 stop.onclick = function() {
     status = 3;
 };
@@ -113,7 +165,7 @@ function startTimer() {
     }
 }
 
-/* controller */
+/* duration controller */
 let ctlUp = document.getElementById('ctl_up');
 let ctlDown = document.getElementById('ctl_down');
 
@@ -156,9 +208,15 @@ function timerComplete() {
     node.classList.add('tomato_record');
     document.getElementById('tomato_records').appendChild(node);
 }
+
 function addZero(i) {
     if (i < 10) {
-        i = "0" + i;
+        i = '0' + i;
     }
     return i;
   }
+
+/* notice sound */
+function audioPlay(){
+    bird.play();
+}

@@ -26,12 +26,15 @@
 
 #card1 {
     border-color: #c6ffdd;
+    display: block;
 }
 #card2 {
     border-color: #fbd786;
+    display: block;
 }
 #card3 {
     border-color: #f7797d;
+    display: block;
 }
 
 /* section: step */
@@ -42,6 +45,7 @@
     font-size: 1.5em;
     margin: 0 auto;
     max-width: 600px;
+    display: block;
 }
 
 
