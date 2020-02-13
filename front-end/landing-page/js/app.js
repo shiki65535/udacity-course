@@ -1,25 +1,50 @@
-window.onscroll = function() {popCard();dynamic();topButton();};
-window.onload = function() {mottoShower();};
+window.onscroll = function() {popCard();topButton();navsec();};
+window.onload = function() {mottoShower();navList();};
 
 /** ENVIRONMENT ELEMENT **/
-/* navbar dynamic */
-let prev = window.pageYOffset;
-function dynamic() {
-  let current = window.pageYOffset;
-  if (prev > current) {
-    document.getElementById('navbar').style.top = '0';
-  } else {
-    document.getElementById('navbar').style.top = '-60px';
-  }
-  prev = current;
+/* navbar > list */
+function navList() {
+    let getNav = document.getElementById('navbar');
+    let unList = document.createElement('ul');
+    let name = ['⌛ Timer', '👏 Merits', '📑 Steps', '☕ Break'];
+    let link = ['#top', '#section_cards', '#section_steps', '#section_motto'];
+    let list, tag, text;
+
+    for( let i = 0; i < name.length; i++) {
+        list = document.createElement('li');
+        tag = document.createElement('a');
+        text = document.createTextNode(name[i]);
+
+        tag.setAttribute('href', link[i]);
+        tag.appendChild(text);
+        list.appendChild(tag);
+        list.classList.add('nav');
+        unList.appendChild(list);
+    }
+    getNav.appendChild(unList);
 }
 
-/* go top button */
-gototop = document.getElementById('gotop');
+/* navbar > show direction */
+function navsec() {
+    let current = window.pageYOffset;
+    let fix = 100; // fix scroll to section lenghth
+    let secList = document.getElementsByClassName('section');
+    let navList = document.getElementsByClassName('nav');
 
-gototop.onclick = function () {
+    for (let i = 0; i < secList.length; i++) {
+        if( secList[i].offsetTop - fix < current && current < secList[i].offsetTop + secList[i].offsetHeight -fix) {
+            navList[i].classList.add('active');
+        } else {
+            navList[i].classList.remove('active');
+        }
+    }
+}
+
+/* go to top button */
+gototop = document.getElementById('gotop');
+gototop.onclick = () => {
    document.body.scrollTop = 0; 
-   document.documentElement.scrollTop = 0; 
+   document.documentElement.scrollTop = 0;
 }
 
 function topButton() {
@@ -33,23 +58,21 @@ function topButton() {
 /** SECTION EFFECT **/
 /* pop up section */
 const cardSection = document.getElementById('section_cards');
-const cardLocation = cardSection.offsetTop;
 let card = document.getElementsByClassName('card_menu');
 
 const stepSection = document.getElementById('section_steps');
-const stepLocation = stepSection.offsetTop;
 let step = document.getElementById('steps');
 
 function popCard() {
-    for(let i = 0; i < card.length; i++) {
-        if (cardLocation - window.pageYOffset  < 250) {
-            card[i].style.left = '0';
+    for(let one of card) {
+        if (cardSection.offsetTop - window.pageYOffset  < 350) {
+            one.style.left = '0';
         } else {
-            card[i].style.left = '-1400px';
+            one.style.left = '-1400px';
         }
     }
-    if (window.pageYOffset - stepLocation > -200) {
-        step.classList.add('animated', 'bounceIn', 'slow');       
+    if (window.pageYOffset - stepSection.offsetTop > -400) {
+        step.classList.add('animated', 'bounceIn', 'slow');
     } else {
         step.classList.remove('animated', 'bounceIn', 'slow');
     }
@@ -59,27 +82,27 @@ function popCard() {
 let tglBtn1 = document.getElementById('toggle1');
 let tglBtn2 = document.getElementById('toggle2');
 
-tglBtn1.onclick = function () {
-    for( let i = 0; i< card.length; i++) {
-        if (card[i].style.display === 'none') {
-            card[i].style.display = 'block';
+tglBtn1.onclick = () => {
+    for( let one of card) {
+        if (one.style.display === 'none') {
+            one.style.display = 'block';
             tglBtn1.innerHTML = '<i class="far fa-minus-square"></i>';
-            card[i].classList.add('animated', 'lightSpeedIn');
+            one.classList.add('animated', 'lightSpeedIn');
         } else {
-            card[i].style.display = 'none';
+            one.style.display = 'none';
             tglBtn1.innerHTML = '<i class="far fa-plus-square"></i>';
-            card[i].classList.remove('animated', 'lightSpeedIn');    
+            one.classList.remove('animated', 'lightSpeedIn');
         }
     }
   }
-tglBtn2.onclick = function () {
+tglBtn2.onclick = () => {
     if (step.style.display === 'none') {
         step.style.display = 'block';
         tglBtn2.innerHTML = '<i class="far fa-minus-square"></i>';
         step.classList.add('animated', 'bounceIn', 'slow');
     } else {
         step.style.display = 'none';
-        tglBtn2.innerHTML = '<i class="far fa-plus-square"></i>';       
+        tglBtn2.innerHTML = '<i class="far fa-plus-square"></i>';
         step.classList.remove('animated', 'bounceIn', 'slow');
     }
   }
@@ -101,7 +124,15 @@ function mottoShower() {
 }
 
 /** TOMATO TIMER **/
-/* main timer */
+/* add "0" tool */
+function addZero(i) {
+    if (i < 10) {
+        i = '0' + i;
+    }
+    return i;
+  }
+
+/* timer > main */
 let timerMin = document.getElementById('timer_min');
 let timerSec = document.getElementById('timer_sec');
 let start = document.getElementById('btn_start');
@@ -116,6 +147,7 @@ let status = 0;
 let mins, secs;
 let timer = endTime - count;
 
+// status: start, pause, stop
 start.onclick = function() {
     if(!status) {
         status = 1;
@@ -136,10 +168,10 @@ function startTimer() {
     timer = ctlTime - count;
 
     function tomato() {
-        if( status === 1) {
+        if( status === 1) { // if play
             timer--;
             count++;
-            if (timer <= 0) {
+            if (timer <= 0) { // if time up
                 status = 0;
                 clearInterval(timeId);
                 timer = ctlTime;
@@ -148,47 +180,48 @@ function startTimer() {
                 timerComplete();
                 audioPlay();
             }
-        } else if( status === 3 ) {
+        } else if( status === 3 ) { // if stop
             status = 0;
             clearInterval(timeId);
             timer = ctlTime;
             count = 0;
         } 
+        //display minute and second
         mins = parseInt( timer / 60, 10 );
         secs = parseInt( timer % 60, 10 );
-
-        mins = mins < 10 ? `0${mins}` : mins;
-        secs = secs < 10 ? `0${secs}` : secs;
+        mins = addZero(mins); // add 0 if less than 10
+        secs = addZero(secs); // add 0 if less than 10
         
         timerMin.textContent = mins;
         timerSec.textContent = secs;
     }
 }
 
-/* duration controller */
+/* timer > duration controller */
 let ctlUp = document.getElementById('ctl_up');
 let ctlDown = document.getElementById('ctl_down');
 
-ctlUp.onclick = function() {
+ctlUp.onclick = function() { // add time
     if( status === 0 && ctlTime <= (60*59)) {
-        ctlTime = ctlTime + 60;
-        setCrl()        
+        ctlTime = ctlTime + 60; // one click plus one minute
+        setCrl();
     }
 }
-ctlDown.onclick = function() {
+ctlDown.onclick = function() { // subtract time
     if( status === 0 && ctlTime > 0 ) {
-        ctlTime = ctlTime - 60;
-        setCrl()
+        ctlTime = ctlTime - 60; // one click minus one minute
+        setCrl();
     }
 }
+
 function setCrl(){
     timer = ctlTime;
     mins = parseInt( timer / 60, 10);
-    mins = mins < 10 ?  `0${mins}` : mins;
+    mins = addZero(mins); // add 0 if less than 10
     timerMin.textContent = mins;
 }
 
-/* tracking timer */
+/* timer > tracking record */
 function timerComplete() {
     let ctlmins = ( ctlTime / 60 );
     let setTime = new Date();
@@ -199,6 +232,7 @@ function timerComplete() {
     let textnode = document.createTextNode(`#${record} at ${hour}:${minute}, with ${ctlmins} mins focus.`);
     let award = `<img src="./img/award.png" height="30" />`;
 
+    // 4 times 1 round
     if( record % 4 == 0 ) {
         node.innerHTML = award;
     } else {
@@ -209,14 +243,7 @@ function timerComplete() {
     document.getElementById('tomato_records').appendChild(node);
 }
 
-function addZero(i) {
-    if (i < 10) {
-        i = '0' + i;
-    }
-    return i;
-  }
-
-/* notice sound */
+/* timer > notice sound */
 function audioPlay(){
     bird.play();
 }

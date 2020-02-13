@@ -25,7 +25,6 @@
   color: #f7797d;
   cursor: pointer;
   transition: ease 0.3s;
-  border-color: #c6ffdd ;
 }
 
 .nav_bar ul {
@@ -34,6 +33,6 @@
   
 .nav_bar li {
     float: left;
-    padding: 0 10px 0 0;
+    padding: 0 10px 3px 0;
     overflow: hidden;
 }

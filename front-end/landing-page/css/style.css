@@ -58,6 +58,10 @@ a:hover {
     color: #f7797d;
 }
 
+.active {
+    border-bottom: 3px solid #c6ffdd;
+}
+
 header {
     padding-bottom: 50px;
 }
