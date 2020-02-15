@@ -4,6 +4,20 @@ Your Tomato Timer is a pomodoro tool to help user to **concentrate on one's own 
 Users can set their prefer time and then just start to focus on the task.  
 Once the timer count down to 0, it will send notice and keep the record.
 
+### Main Timer
+- Countdown timer.
+- Adujust the duration.
+- Keep record.
+
+### Merits
+The benefits Your Tomato Timer will give to you.
+
+### Steps
+How to use Your Tomato Timer.
+
+### Break
+Take a break, refresh your mind.
+
 ## Update
 - Feb 08, 2020 - v1.0 Fininsed.
 - Feb 09, 2020 - v1.2 Follow the suggestions.
